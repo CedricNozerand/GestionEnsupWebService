@@ -1,4 +1,4 @@
-# jpaGestionEnsup
+# gestionWebService
 
 Webservice Restful contenant le dao du projet GestionEnsup
 
