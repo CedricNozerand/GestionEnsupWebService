@@ -12,8 +12,8 @@ Client du WebService contenant le site web du projet GestionEnsup
 
 1. Cloner le dépôt
 2. A la racine du projet, ouvrir un invite de commande et taper l'instruction `mvn clean package` pour compiler le projet
-3. Une fois compilé, copier le fichier `gestionWebService\web\target\gestionWebClient.war` dans le dossier **webapps** du serveur Tomcat
+3. Une fois compilé, copier le fichier `gestionWebClientV1\webclient\target\webclient.war` dans le dossier **webapps** du serveur Tomcat
 4. Lancer le serveur Tomcat pour déployer le projet sur le serveur
-5. Ouvrir un navigateur et entrer `http://127.0.0.1:8080/gestionWebClient` dans la barre d'URL pour accéder à l'application
+5. Ouvrir un navigateur et entrer `http://127.0.0.1:8080/webclient` dans la barre d'URL pour accéder à l'application
 
 Remarque : Pour pouvoir se connecter à l'application, il faut qu'il existe au moins une entrée "User" dans la base de données avec le rôle "R" ou "D"
