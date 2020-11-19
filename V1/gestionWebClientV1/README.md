@@ -1,4 +1,4 @@
-# gestionWebService
+# gestionWebClient V1
 
 Client du WebService contenant le site web du projet GestionEnsup
 
