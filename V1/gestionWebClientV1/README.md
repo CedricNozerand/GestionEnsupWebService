@@ -17,4 +17,4 @@ Client du WebService contenant le site web du projet GestionEnsup
 4. Lancer le serveur Tomcat pour déployer le projet sur le serveur
 5. Ouvrir un navigateur et entrer `http://127.0.0.1:8080/webclient` dans la barre d'URL pour accéder à l'application
 
-Remarque : Pour pouvoir se connecter à l'application, il faut qu'il existe au moins une entrée "User" dans la base de données avec le rôle "R" ou "D"
+Remarque : infos de connexion  ( login : toto, password : toto)
