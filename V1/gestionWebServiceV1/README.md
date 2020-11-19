@@ -15,6 +15,5 @@ Webservice Restful contenant le dao du projet GestionEnsup
 2. A la racine du projet, ouvrir un invite de commande et taper l'instruction `mvn clean package` pour compiler le projet
 3. Une fois compilé, copier le fichier `gestionWebServiceV1\web\target\web.war` dans le dossier **webapps** du serveur Tomcat
 4. Lancer le serveur Tomcat pour déployer le projet sur le serveur
-5. Créer une base de données **jpagestionensup**
-6. Au niveau de votre serveur de données, importer le fichier **jpagestionensup.sql**
-7. Ouvrir un navigateur et entrer `http://127.0.0.1:8080/web` dans la barre d'URL pour accéder à l'application
+5. Au niveau du serveur de données, importer le fichier **jpagestionensup.sql**
+6. Ouvrir un navigateur et entrer `http://127.0.0.1:8080/web` dans la barre d'URL pour accéder à l'application
