@@ -7,6 +7,7 @@ Client du WebService contenant le site web du projet GestionEnsup
 - JDK 8
 - Maven 3.6.3
 - Apache Tomcat 9 configuré sur le port 8080
+- Avoir installé [gestionWebServiceV1](https://github.com/BenjaminBoutrois/GestionEnsupWebService/tree/main/V1/gestionWebServiceV1)
 
 ## Installation
 
