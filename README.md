@@ -14,5 +14,5 @@ V2
 
 ## Développé par
 
-Ahmadou Lo
+Ahmadou Lo    
 Benjamin Boutrois
