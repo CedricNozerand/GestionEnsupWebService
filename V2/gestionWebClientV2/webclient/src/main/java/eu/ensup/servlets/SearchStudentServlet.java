@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import eu.ensup.domaine.Student;
-import eu.ensup.domaine.User;
 import eu.ensup.service.StudentService;
 import eu.ensup.service.IStudentService;
 
@@ -21,7 +20,6 @@ import eu.ensup.service.IStudentService;
 public class SearchStudentServlet extends HttpServlet
 {
 	private static final long serialVersionUID = 1L;
-	private User user = null;
 	private IStudentService studentService;
 
 	/**
@@ -49,20 +47,15 @@ public class SearchStudentServlet extends HttpServlet
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
 		HttpSession session = request.getSession();
-		
-		session.setAttribute("student", null);
-		
-		user = (User) session.getAttribute("user");
-		
+
 		List<Student> students = studentService.searchStudent(request.getParameter("firstNameR"),
 				request.getParameter("lastNameR"));
 
 		session.setAttribute("students", students);
-		
+
 		RequestDispatcher dispatcher = null;
-		
+
 		dispatcher = request.getRequestDispatcher("etudiant.jsp");
 		dispatcher.forward(request, response);
 	}
-
 }

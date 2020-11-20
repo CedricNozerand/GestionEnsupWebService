@@ -8,9 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import eu.ensup.domaine.Student;
-import eu.ensup.service.CourseService;
 import eu.ensup.service.StudentService;
-import eu.ensup.service.ICourseService;
 import eu.ensup.service.IStudentService;
 
 /**

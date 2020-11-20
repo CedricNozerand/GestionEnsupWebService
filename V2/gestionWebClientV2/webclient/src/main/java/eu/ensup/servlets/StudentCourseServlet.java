@@ -43,7 +43,18 @@ public class StudentCourseServlet extends HttpServlet
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
-		associateCourse(request, response);
+		HttpSession session = request.getSession();
+		String object = request.getParameter("id");
+		int id = Integer.valueOf(object);
+
+		Student student = studentService.getStudent(id);
+		List<Course> courses = courseService.getAllCourses();
+
+		dispatcher = request.getRequestDispatcher("etudiantCours.jsp");
+		session.setAttribute("student", student);
+		session.setAttribute("courses", courses);
+
+		dispatcher.forward(request, response);
 	}
 
 	/**
@@ -55,7 +66,6 @@ public class StudentCourseServlet extends HttpServlet
 		String email = request.getParameter("mail");
 		String course = request.getParameter("listeCours");
 		Student student = studentService.getStudentByMail(email);
-		HttpSession session = request.getSession();
 
 		System.out.println(course + " " + student.getId());
 
@@ -63,21 +73,4 @@ public class StudentCourseServlet extends HttpServlet
 		dispatcher = request.getRequestDispatcher("etudiant.jsp");
 		dispatcher.forward(request, response);
 	}
-
-	public void associateCourse(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
-	{
-		HttpSession session = request.getSession();
-		String object = request.getParameter("id");
-		int id = Integer.valueOf(object);
-
-		Student student = studentService.getStudent(id);
-		List<Course> listCours = courseService.getAllCourses();
-
-		dispatcher = request.getRequestDispatcher("etudiantCours.jsp");
-		session.setAttribute("student", student);
-		session.setAttribute("courses", listCours);
-
-		dispatcher.forward(request, response);
-	}
-
 }
