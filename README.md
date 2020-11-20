@@ -12,7 +12,7 @@ V2
 - Webservice Restful : projet maven web multimodule avec Jersey 2.32
 - Client : projet maven web multimodule avec Jersey 2.32
 
-## Développé par
+## Développeurs
 
 Ahmadou Lo    
 Benjamin Boutrois
