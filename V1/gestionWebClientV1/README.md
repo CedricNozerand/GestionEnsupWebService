@@ -7,7 +7,7 @@ Client du WebService contenant le site web du projet GestionEnsup
 - JDK 8
 - Maven 3.6.3
 - Apache Tomcat 9 configuré sur le port 8080
-- Avoir installé [gestionWebServiceV1](https://github.com/BenjaminBoutrois/GestionEnsupWebService/tree/main/V1/gestionWebServiceV1)
+- Avoir installé et déployé [gestionWebServiceV1](https://github.com/BenjaminBoutrois/GestionEnsupWebService/tree/main/V1/gestionWebServiceV1)
 
 ## Installation
 
@@ -17,4 +17,4 @@ Client du WebService contenant le site web du projet GestionEnsup
 4. Lancer le serveur Tomcat pour déployer le projet sur le serveur
 5. Ouvrir un navigateur et entrer `http://127.0.0.1:8080/webclient` dans la barre d'URL pour accéder à l'application
 
-Remarque : infos de connexion  ( login : toto, password : toto)
+Remarque : infos de connexion  (login : toto, password : toto)
