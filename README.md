@@ -1,6 +1,6 @@
 # GestionEnsupWebService
 
-Dépôt de projets de gestion d'école.
+Dépôt de projets de gestion d'école en utilisant les webservices.
 
 ## Infos versions
 
