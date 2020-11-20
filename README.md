@@ -14,7 +14,7 @@ V2
 
 ## Démo
 
-(Vidéo de démonstration)[https://www.youtube.com/watch?v=ZCR3_G3agps&ab_channel=BenjaminBoutrois]
+[Vidéo de démonstration](https://www.youtube.com/watch?v=ZCR3_G3agps&ab_channel=BenjaminBoutrois)
 
 ## Développeurs
 
