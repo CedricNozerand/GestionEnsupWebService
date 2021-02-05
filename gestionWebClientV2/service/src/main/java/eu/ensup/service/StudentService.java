@@ -13,6 +13,9 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.glassfish.jersey.client.ClientConfig;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.ObjectWriter;
 import com.fasterxml.jackson.jaxrs.json.JacksonJsonProvider;
 
 import eu.ensup.domaine.Student;
@@ -56,7 +59,15 @@ public class StudentService implements IStudentService
 
 		WebTarget webTarget = client.target(URL).path("rest/studentService/createStudent");
 
-		String input = student.toJson();
+//		String input = student.toJson();
+		
+		ObjectWriter input = new ObjectMapper().writer().withDefaultPrettyPrinter();
+		try {
+			String json = input.writeValueAsString(input);
+		} catch (JsonProcessingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 		Response response = webTarget.request("application/json").post(Entity.json(input));
 	}
@@ -158,7 +169,17 @@ public class StudentService implements IStudentService
 
 		WebTarget webTarget = client.target(URL).path("rest/studentService/updateStudent/" + oldStudentId);
 
-		String input = student.toJson();
+//		String input = student.toJson();
+		
+
+		ObjectWriter input = new ObjectMapper().writer().withDefaultPrettyPrinter();
+		try {
+			String json = input.writeValueAsString(input);
+		} catch (JsonProcessingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 
 		Response response = webTarget.request("application/json").put(Entity.json(input));
 	}

@@ -26,7 +26,6 @@ public class NoteService implements INoteService{
 		LOG.info("Démarrage du service NoteService");
 	}
 	
-	@Override
 	public List<Object[]> getLevelsRepartition() {
 		LOG.info("Appel de la méthode getLevelsRepartition() du dao");
 		
@@ -51,7 +50,6 @@ public class NoteService implements INoteService{
 		return list;
 	}
 
-	@Override
 	public void getStudentsByLevel() {
 		
 	}
