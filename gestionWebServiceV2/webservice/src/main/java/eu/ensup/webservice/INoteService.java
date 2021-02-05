@@ -6,5 +6,5 @@ public interface INoteService {
 
 	List<Object[]> getLevelsRepartition();
 	
-	void getStudentsByLevel();
+	List<Object[]> getStudentsByLevel(int level);
 }

@@ -47,8 +47,45 @@ public class NoteDao implements INoteDao{
 	}
 
 	@Override
-	public void getStudentsByLevel() {
+	public List<Object[]> getStudentsByLevel(int level) {
+		String req;
+		String fin_req;		
 		
+		req = "SELECT "
+				+ "	'toto' as t, student_id "
+				+ "FROM "
+				+ "	(SELECT  "
+				+ "        student_id "
+				+ "        ,avg(value) as moyenne  "
+				+ "    FROM  "
+				+ "        note  "
+				+ "    GROUP BY student_id) a";
+		
+		if(level == 0) fin_req = " WHERE a.moyenne < 7 ";
+		else if(level == 1) fin_req = " WHERE a.moyenne BETWEEN 7 AND 14 "; 
+		else if(level == 2) fin_req = " WHERE a.moyenne > 14 ";
+		else fin_req = null;
+		
+		req = req + ' ' + fin_req;
+		
+		EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("demojpa-pu");
+
+		EntityManager entityManager = entityManagerFactory.createEntityManager();
+		
+		Query q = entityManager.createNativeQuery(req);
+		
+		
+		
+		List<Object[]> result = q.getResultList();
+		
+		String test = null;
+		for(int i = 0; i < result.size(); i++) {
+			 test += " ||||| " + result.get(i)[1];
+		}
+
+		LOG.info(test);
+		return result;
+			
 	}
 	
 	

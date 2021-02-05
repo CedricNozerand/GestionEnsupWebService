@@ -41,16 +41,29 @@ public class NoteService implements INoteService{
 		List<Object[]> list = response.readEntity(new GenericType<List<Object[]>>()
 		{
 		});
-		
-		LOG.info(list.get(0)[0]);
-		LOG.info(list.get(0)[1]);
-		LOG.info(list.get(0)[2]);
-		LOG.info("test");
-		
 		return list;
 	}
 
+<<<<<<< HEAD
 	public void getStudentsByLevel() {
+=======
+	@Override
+	public List<Object[]> getStudentsByLevel(int level) {
+		LOG.info("Appel de la méthode getStudentsByLevel() du dao");
+>>>>>>> 91d45535da9ed9d48190451a09120c78c76a46d1
 		
+		ClientConfig clientConfig = new ClientConfig();
+		clientConfig.register(JacksonJsonProvider.class);
+
+		Client client = ClientBuilder.newClient(clientConfig);
+
+		WebTarget webTarget = client.target(URL).path("rest/noteService/getStudentsByLevel/"+ level);
+
+		Response response = webTarget.request("application/json").get();
+
+		List<Object[]> list = response.readEntity(new GenericType<List<Object[]>>()
+		{
+		});
+		return list;
 	}
 }

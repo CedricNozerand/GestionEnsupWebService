@@ -14,7 +14,10 @@
 						<%= session.getAttribute("repartition") %>
 						<%= session.getAttribute("repartition1") %>
 						<%= session.getAttribute("repartition2") %>
-						
+						<br><br>
+						<%= session.getAttribute("getLevelMauvais") %>
+						<%= session.getAttribute("getLevelMoyens") %>
+						<%= session.getAttribute("getLevelBons") %>
 						
 						<!-- Icon Divider-->
 						<div class="divider-custom divider-light">
