@@ -60,7 +60,7 @@ public class ConnectionServlet extends HttpServlet
 	 */
 	public void connect(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
-		String mauvais = "", moyens = "", bons = "";
+		
 		NoteService noteService= new NoteService();
 		
 		
@@ -74,25 +74,8 @@ public class ConnectionServlet extends HttpServlet
 			dispatcher = request.getRequestDispatcher("home.jsp");
 			HttpSession session = request.getSession();
 			session.setAttribute("user", user);
-			session.setAttribute("repartition", "Pas bon " + noteService.getLevelsRepartition().get(0)[0]);
-			session.setAttribute("repartition1", "Moyen " + noteService.getLevelsRepartition().get(0)[1]);
-			session.setAttribute("repartition2", "Bon " + noteService.getLevelsRepartition().get(0)[2]);
+
 			
-			for(int i = 0; i < noteService.getStudentsByLevel(0).size(); i++) {
-				mauvais += "'"+noteService.getStudentsByLevel(0).get(i)[1] + "',";
-			}
-			
-			for(int i = 0; i < noteService.getStudentsByLevel(1).size(); i++) {
-				moyens += "'"+noteService.getStudentsByLevel(1).get(i)[1] + "',";
-			}
-			
-			for(int i = 0; i < noteService.getStudentsByLevel(2).size(); i++) {
-				bons += "'"+noteService.getStudentsByLevel(2).get(i)[1] + "',";
-			}
-					
-			session.setAttribute("getLevelMauvais", "<br>mauvais " + mauvais);
-			session.setAttribute("getLevelMoyens", "<br>moyens " + moyens);
-			session.setAttribute("getLevelBons", "<br>bons " + bons);
 		}
 		else
 		{

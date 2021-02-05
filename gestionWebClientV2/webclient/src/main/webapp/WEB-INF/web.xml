@@ -64,6 +64,12 @@
 		<display-name>StudentCourseServlet</display-name>
 		<description></description>
 		<servlet-class>eu.ensup.servlets.StudentCourseServlet</servlet-class>
+	</servlet>	
+	<servlet>
+		<servlet-name>StudentChartServlet</servlet-name>
+		<display-name>StudentChartServlet</display-name>
+		<description></description>
+		<servlet-class>eu.ensup.servlets.StudentChartServlet</servlet-class>
 	</servlet>
 
 	<servlet-mapping>
@@ -105,5 +111,9 @@
 	<servlet-mapping>
 		<servlet-name>StudentCourseServlet</servlet-name>
 		<url-pattern>/EtudiantCoursServlet</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>StudentChartServlet</servlet-name>
+		<url-pattern>/StudentChartServlet</url-pattern>
 	</servlet-mapping>
 </web-app>

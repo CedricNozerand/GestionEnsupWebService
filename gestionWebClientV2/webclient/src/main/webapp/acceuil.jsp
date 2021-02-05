@@ -11,14 +11,6 @@
 						<!-- Masthead Heading-->
 						<h1 class="masthead-heading text-uppercase mb-0">GESTION SCOLAIRE</h1>
 						
-						<%= session.getAttribute("repartition") %>
-						<%= session.getAttribute("repartition1") %>
-						<%= session.getAttribute("repartition2") %>
-						<br><br>
-						<%= session.getAttribute("getLevelMauvais") %>
-						<%= session.getAttribute("getLevelMoyens") %>
-						<%= session.getAttribute("getLevelBons") %>
-						
 						<!-- Icon Divider-->
 						<div class="divider-custom divider-light">
 							<div class="divider-custom-line"></div>

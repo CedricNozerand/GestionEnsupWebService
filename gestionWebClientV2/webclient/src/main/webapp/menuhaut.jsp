@@ -1,5 +1,4 @@
-
-        <%@page import="eu.ensup.domaine.User"%>
+ <%@page import="eu.ensup.domaine.User"%>
 
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
@@ -32,6 +31,7 @@
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="home.jsp">Accueil</a></li>
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="CoursServlet">Cours</a></li>
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="EtudiantServlet">Liste des étudiants</a></li>
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="StudentChartServlet">Statistiques</a></li>
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="index.jsp">Déconnexion</a></li>
                     </ul>
                 </div>
@@ -41,4 +41,3 @@
                 
             </div>
         </nav>
-     
