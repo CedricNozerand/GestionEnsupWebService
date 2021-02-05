@@ -17,3 +17,5 @@ Webservice Restful contenant le dao du projet GestionEnsup
 4. Lancer le serveur Tomcat pour déployer le projet sur le serveur
 5. Au niveau du serveur de base de données, importer le fichier **jpagestionensup.sql**
 6. Ouvrir un navigateur et entrer `http://127.0.0.1:8080/web` dans la barre d'URL pour accéder à l'application
+
+Pour l'installation du client, se référer à [gestionWebServiceV2](https://github.com/CedricNozerand/GestionEnsupWebService/tree/main/gestionWebClientV2)

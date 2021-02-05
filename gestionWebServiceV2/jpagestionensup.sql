@@ -1,75 +1,94 @@
-CREATE DATABASE  IF NOT EXISTS `jpagestionensup` /*!40100 DEFAULT CHARACTER SET latin1 */;
-USE `jpagestionensup`;
--- MySQL dump 10.13  Distrib 8.0.19, for Win64 (x86_64)
+-- phpMyAdmin SQL Dump
+-- version 4.8.3
+-- https://www.phpmyadmin.net/
 --
--- Host: localhost    Database: jpagestionensup
--- ------------------------------------------------------
--- Server version	5.7.28-log
+-- Hôte : 127.0.0.1
+-- Généré le :  ven. 05 fév. 2021 à 17:42
+-- Version du serveur :  10.1.36-MariaDB
+-- Version de PHP :  7.2.11
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
+SET time_zone = "+00:00";
+
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!50503 SET NAMES utf8 */;
-/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
-/*!40103 SET TIME_ZONE='+00:00' */;
-/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
-/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
-/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
-/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+/*!40101 SET NAMES utf8mb4 */;
 
 --
--- Table structure for table `course`
+-- Base de données :  `jpagestionensup`
 --
 
-DROP TABLE IF EXISTS `course`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `course`
+--
+
 CREATE TABLE `course` (
   `themeCourse` varchar(255) NOT NULL,
-  `numberHours` int(11) NOT NULL,
-  PRIMARY KEY (`themeCourse`)
+  `numberHours` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `course`
+-- Déchargement des données de la table `course`
 --
 
-LOCK TABLES `course` WRITE;
-/*!40000 ALTER TABLE `course` DISABLE KEYS */;
-INSERT INTO `course` VALUES ('Anglais',7),('Informatique',65),('Rien',2);
-/*!40000 ALTER TABLE `course` ENABLE KEYS */;
-UNLOCK TABLES;
+INSERT INTO `course` (`themeCourse`, `numberHours`) VALUES
+('Anglais', 7),
+('Informatique', 65),
+('Rien', 2);
+
+-- --------------------------------------------------------
 
 --
--- Table structure for table `hibernate_sequence`
+-- Structure de la table `hibernate_sequence`
 --
 
-DROP TABLE IF EXISTS `hibernate_sequence`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `hibernate_sequence` (
   `next_val` bigint(20) DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `hibernate_sequence`
+-- Déchargement des données de la table `hibernate_sequence`
 --
 
-LOCK TABLES `hibernate_sequence` WRITE;
-/*!40000 ALTER TABLE `hibernate_sequence` DISABLE KEYS */;
-INSERT INTO `hibernate_sequence` VALUES (3),(3);
-/*!40000 ALTER TABLE `hibernate_sequence` ENABLE KEYS */;
-UNLOCK TABLES;
+INSERT INTO `hibernate_sequence` (`next_val`) VALUES
+(8),
+(8);
+
+-- --------------------------------------------------------
 
 --
--- Table structure for table `student`
+-- Structure de la table `note`
 --
 
-DROP TABLE IF EXISTS `student`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `note` (
+  `id` int(11) NOT NULL,
+  `value` float NOT NULL,
+  `course_themeCourse` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  `student_id` int(11) DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Déchargement des données de la table `note`
+--
+
+INSERT INTO `note` (`id`, `value`, `course_themeCourse`, `student_id`) VALUES
+(1, 16.5, 'Informatique', 2),
+(4, 6, 'Informatique', 3),
+(5, 10, 'Informatique', 4),
+(6, 15, 'Informatique', 6);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `student`
+--
+
 CREATE TABLE `student` (
   `id` int(11) NOT NULL,
   `address` varchar(255) DEFAULT NULL,
@@ -77,79 +96,99 @@ CREATE TABLE `student` (
   `firstName` varchar(255) DEFAULT NULL,
   `lastName` varchar(255) DEFAULT NULL,
   `mailAddress` varchar(255) DEFAULT NULL,
-  `numberPhone` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  `numberPhone` varchar(255) DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `student`
+-- Déchargement des données de la table `student`
 --
 
-LOCK TABLES `student` WRITE;
-/*!40000 ALTER TABLE `student` DISABLE KEYS */;
-INSERT INTO `student` VALUES (2,'11 boulevard Montaigut 94000 Créteil','2020-11-03','Ahmadou','Lo','ahmadou19@gmail.com','0755234475');
-/*!40000 ALTER TABLE `student` ENABLE KEYS */;
-UNLOCK TABLES;
+INSERT INTO `student` (`id`, `address`, `birthDate`, `firstName`, `lastName`, `mailAddress`, `numberPhone`) VALUES
+(3, '14 rue de l\'Amadou', '1992-02-05', 'Ahmadou', 'Lo', 'al@gmail.com', '0654739493'),
+(4, '10 avenue de la Bretagne', '1994-04-21', 'Fatimata', 'Ba', 'fb@gmail.com', '0678868412'),
+(5, '16 rue de la Joconde', '1993-08-14', 'Cédric', 'Nozerand', 'cn@gmail.com', '0678457846'),
+(6, '14 rue du Bout Corneret', '1996-09-26', 'Benjamin', 'Boutrois', 'bb@gmail.com', '0607080910'),
+(7, '3 avenue des Rois', '1995-05-24', 'Lyes', 'Koriche', 'lk@gmail.com', '0701542414');
+
+-- --------------------------------------------------------
 
 --
--- Table structure for table `student_course`
+-- Structure de la table `student_course`
 --
 
-DROP TABLE IF EXISTS `student_course`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `student_course` (
   `Student_id` int(11) NOT NULL,
-  `courses_themeCourse` varchar(255) NOT NULL,
-  KEY `FKbwm9j0u941p56cdsugy7e9c22` (`courses_themeCourse`),
-  KEY `FK1xm2hei9chmwoqf2wfm104nmg` (`Student_id`)
+  `courses_themeCourse` varchar(255) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
+
+-- --------------------------------------------------------
 
 --
--- Dumping data for table `student_course`
+-- Structure de la table `user`
 --
 
-LOCK TABLES `student_course` WRITE;
-/*!40000 ALTER TABLE `student_course` DISABLE KEYS */;
-INSERT INTO `student_course` VALUES (2,'Anglais'),(2,'Informatique');
-/*!40000 ALTER TABLE `student_course` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `user`
---
-
-DROP TABLE IF EXISTS `user`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `user` (
   `id` int(11) NOT NULL,
   `login` varchar(255) DEFAULT NULL,
   `password` varchar(255) DEFAULT NULL,
-  `profil` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  `profil` varchar(255) DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `user`
+-- Déchargement des données de la table `user`
 --
 
-LOCK TABLES `user` WRITE;
-/*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (1,'toto','toto','D');
-/*!40000 ALTER TABLE `user` ENABLE KEYS */;
-UNLOCK TABLES;
-/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+INSERT INTO `user` (`id`, `login`, `password`, `profil`) VALUES
+(1, 'admin', 'admin', 'D');
 
-/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
-/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
-/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+--
+-- Index pour les tables déchargées
+--
+
+--
+-- Index pour la table `course`
+--
+ALTER TABLE `course`
+  ADD PRIMARY KEY (`themeCourse`);
+
+--
+-- Index pour la table `note`
+--
+ALTER TABLE `note`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `FKmugpg56w1dfd00m3aoa8sx6fp` (`course_themeCourse`),
+  ADD KEY `FK9c10dmjliyhtgsg9n2fv2ukvv` (`student_id`);
+
+--
+-- Index pour la table `student`
+--
+ALTER TABLE `student`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Index pour la table `student_course`
+--
+ALTER TABLE `student_course`
+  ADD KEY `FKbwm9j0u941p56cdsugy7e9c22` (`courses_themeCourse`),
+  ADD KEY `FK1xm2hei9chmwoqf2wfm104nmg` (`Student_id`);
+
+--
+-- Index pour la table `user`
+--
+ALTER TABLE `user`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT pour les tables déchargées
+--
+
+--
+-- AUTO_INCREMENT pour la table `note`
+--
+ALTER TABLE `note`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+COMMIT;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
-
--- Dump completed on 2020-11-19 16:27:51

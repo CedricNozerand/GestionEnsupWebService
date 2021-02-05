@@ -12,7 +12,6 @@ import javax.servlet.http.HttpSession;
 import eu.ensup.domaine.User;
 import eu.ensup.service.UserService;
 import eu.ensup.service.IUserService;
-import eu.ensup.service.NoteService;
 
 /**
  * Servlet implementation class ConnexionServlet
@@ -60,22 +59,15 @@ public class ConnectionServlet extends HttpServlet
 	 */
 	public void connect(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
-		
-		NoteService noteService= new NoteService();
-		
-		
 		User user = userService.getUser(request.getParameter("login"), request.getParameter("password"));
 
 		// page de retour
-
 		if (user != null && user.getLogin().equalsIgnoreCase(request.getParameter("login"))
 				&& user.getPassword().equalsIgnoreCase(request.getParameter("password")))
 		{
 			dispatcher = request.getRequestDispatcher("home.jsp");
 			HttpSession session = request.getSession();
 			session.setAttribute("user", user);
-
-			
 		}
 		else
 		{
