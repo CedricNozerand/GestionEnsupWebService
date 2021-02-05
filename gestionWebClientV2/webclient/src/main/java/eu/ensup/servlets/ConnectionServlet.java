@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 import eu.ensup.domaine.User;
 import eu.ensup.service.UserService;
 import eu.ensup.service.IUserService;
+import eu.ensup.service.NoteService;
 
 /**
  * Servlet implementation class ConnexionServlet
@@ -47,7 +48,6 @@ public class ConnectionServlet extends HttpServlet
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
-		// TODO Auto-generated method stub
 		connect(request, response);
 	}
 
@@ -60,6 +60,10 @@ public class ConnectionServlet extends HttpServlet
 	 */
 	public void connect(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
+		
+		NoteService noteService= new NoteService();
+		
+		
 		User user = userService.getUser(request.getParameter("login"), request.getParameter("password"));
 
 		// page de retour
@@ -70,6 +74,9 @@ public class ConnectionServlet extends HttpServlet
 			dispatcher = request.getRequestDispatcher("home.jsp");
 			HttpSession session = request.getSession();
 			session.setAttribute("user", user);
+			session.setAttribute("repartition", "Pas bon " + noteService.getLevelsRepartition().get(0)[0]);
+			session.setAttribute("repartition1", "Moyen " + noteService.getLevelsRepartition().get(0)[1]);
+			session.setAttribute("repartition2", "Bon " + noteService.getLevelsRepartition().get(0)[2]);
 		}
 		else
 		{
