@@ -14,24 +14,22 @@ import org.glassfish.jersey.client.ClientConfig;
 
 import com.fasterxml.jackson.jaxrs.json.JacksonJsonProvider;
 
-public class NoteService implements INoteService
-{
+public class NoteService implements INoteService{
 
 	private static final Logger LOG = LogManager.getLogger(NoteService.class);
 
 	private static final String URL = "http://localhost:8080/web/";
-
+	
 	public NoteService()
 	{
 		super();
 		LOG.info("Démarrage du service NoteService");
 	}
-
+	
 	@Override
-	public List<Object[]> getLevelsRepartition()
-	{
+	public List<Object[]> getLevelsRepartition() {
 		LOG.info("Appel de la méthode getLevelsRepartition() du dao");
-
+		
 		ClientConfig clientConfig = new ClientConfig();
 		clientConfig.register(JacksonJsonProvider.class);
 
@@ -48,16 +46,15 @@ public class NoteService implements INoteService
 	}
 
 	@Override
-	public List<Object[]> getStudentsByLevel(int level)
-	{
+	public List<Object[]> getStudentsByLevel(int level) {
 		LOG.info("Appel de la méthode getStudentsByLevel() du dao");
-
+		
 		ClientConfig clientConfig = new ClientConfig();
 		clientConfig.register(JacksonJsonProvider.class);
 
 		Client client = ClientBuilder.newClient(clientConfig);
 
-		WebTarget webTarget = client.target(URL).path("rest/noteService/getStudentsByLevel/" + level);
+		WebTarget webTarget = client.target(URL).path("rest/noteService/getStudentsByLevel/"+ level);
 
 		Response response = webTarget.request("application/json").get();
 

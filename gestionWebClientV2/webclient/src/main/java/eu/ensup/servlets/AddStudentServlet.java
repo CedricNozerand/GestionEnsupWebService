@@ -11,6 +11,7 @@ import javax.servlet.http.HttpSession;
 import eu.ensup.domaine.Student;
 import eu.ensup.domaine.User;
 import eu.ensup.service.StudentService;
+import eu.ensup.service.exceptions.CreateUserException;
 import eu.ensup.service.IStudentService;
 
 /**
@@ -65,7 +66,12 @@ public class AddStudentServlet extends HttpServlet
 
 		user = (User) session.getAttribute("user");
 
-		studentService.createStudent(student);
+		try {
+			studentService.createStudent(student);
+		} catch (CreateUserException e) {
+			e.printStackTrace();
+			dispatcher = request.getRequestDispatcher("createUserError.jsp");
+		}
 
 		// Refresh students list
 		session.setAttribute("students", studentService.getAllStudents());

@@ -16,6 +16,7 @@ import org.glassfish.jersey.client.ClientConfig;
 import com.fasterxml.jackson.jaxrs.json.JacksonJsonProvider;
 
 import eu.ensup.domaine.Student;
+import eu.ensup.service.exceptions.CreateUserException;
 
 /**
  * Classe StudentService : Fait le lien entre le lanceur et le DAO concernant
@@ -48,17 +49,19 @@ public class StudentService implements IStudentService
 	 * @see eu.ensup.jpaGestionEnsup.service.IStudentService#createStudent(eu.ensup.
 	 * jpaGestionEnsup.domaine.Student)
 	 */
-	public void createStudent(Student student)
+	public void createStudent(Student student) throws CreateUserException
 	{
 		LOG.info("Appel de la méthode createStudent() du dao");
-
+		
 		Client client = ClientBuilder.newClient();
-
 		WebTarget webTarget = client.target(URL).path("rest/studentService/createStudent");
-
 		String input = student.toJson();
-
 		Response response = webTarget.request("application/json").post(Entity.json(input));
+		
+		
+		if(response.getStatus() == 401) {
+			throw new CreateUserException();
+		}
 	}
 
 	/*

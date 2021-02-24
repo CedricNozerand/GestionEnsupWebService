@@ -3,6 +3,7 @@ package eu.ensup.webservice;
 import java.util.List;
 
 import eu.ensup.domaine.Student;
+import eu.ensup.webservice.exceptions.StudentServiceException;
 
 public interface IStudentService
 {
@@ -11,7 +12,7 @@ public interface IStudentService
 	 * 
 	 * @param student L'étudiant à créer.
 	 */
-	void createStudent(Student student);
+	void createStudent(Student student) throws StudentServiceException;
 
 	/**
 	 * Retourne un étudiant en fonction de son id.

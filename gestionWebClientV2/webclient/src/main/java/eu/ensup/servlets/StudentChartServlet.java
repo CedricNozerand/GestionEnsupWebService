@@ -24,6 +24,8 @@ import eu.ensup.service.NoteService;
 public class StudentChartServlet extends HttpServlet
 {
 	private static final long serialVersionUID = 1L;
+	private IStudentService studentService;
+	private ICourseService courseService;
 	private RequestDispatcher dispatcher = null;
 
 	/**
@@ -31,7 +33,8 @@ public class StudentChartServlet extends HttpServlet
 	 */
 	public StudentChartServlet()
 	{
-		
+		studentService = new StudentService();
+		courseService = new CourseService();
 	}
 
 	/**
@@ -59,43 +62,42 @@ public class StudentChartServlet extends HttpServlet
 	 * @throws ServletException
 	 * @throws IOException
 	 */
-	public void viewStudent(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException
+	public void viewStudent(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
 		HttpSession session = request.getSession();
-
-		NoteService noteService = new NoteService();
-
+		
+		NoteService noteService= new NoteService();
+		
 		String mauvais = "", moyens = "", bons = "";
 
+//		List<Student> listStudent = studentService.getAllStudents();
+//		List<Course> listCourse = courseService.getAllCourses();
+		
 		session.setAttribute("bon", noteService.getLevelsRepartition().get(0)[2]);
 		session.setAttribute("moyen", noteService.getLevelsRepartition().get(0)[1]);
 		session.setAttribute("mauvais", noteService.getLevelsRepartition().get(0)[0]);
-
-		for (int i = 0; i < noteService.getStudentsByLevel(0).size(); i++)
-		{
+		
+		for(int i = 0; i < noteService.getStudentsByLevel(0).size(); i++) {
 			mauvais += noteService.getStudentsByLevel(0).get(i)[1] + "<br>";
 		}
-
-		for (int i = 0; i < noteService.getStudentsByLevel(1).size(); i++)
-		{
+		
+		for(int i = 0; i < noteService.getStudentsByLevel(1).size(); i++) {
 			moyens += noteService.getStudentsByLevel(1).get(i)[1] + "<br>";
 		}
-
-		for (int i = 0; i < noteService.getStudentsByLevel(2).size(); i++)
-		{
+		
+		for(int i = 0; i < noteService.getStudentsByLevel(2).size(); i++) {
 			bons += noteService.getStudentsByLevel(2).get(i)[1] + "<br>";
 		}
-
+				
 		session.setAttribute("getLevelMauvais", mauvais);
-		session.setAttribute("getLevelMoyens", moyens);
+		session.setAttribute("getLevelMoyens",  moyens);
 		session.setAttribute("getLevelBons", bons);
-
+		
 //		session.setAttribute("repartition", "Pas bon " + noteService.getLevelsRepartition().get(0)[0]);
 //		session.setAttribute("repartition1", "Moyen " + noteService.getLevelsRepartition().get(0)[1]);
 //		session.setAttribute("repartition2", "Bon " + noteService.getLevelsRepartition().get(0)[2]);
 
-		dispatcher = request.getRequestDispatcher("studentCharts.jsp");
+		dispatcher = request.getRequestDispatcher("studentCharts.jsp");	
 
 		dispatcher.forward(request, response);
 	}

@@ -3,6 +3,7 @@ package eu.ensup.service;
 import java.util.List;
 
 import eu.ensup.domaine.Student;
+import eu.ensup.service.exceptions.CreateUserException;
 
 public interface IStudentService
 {
@@ -11,7 +12,7 @@ public interface IStudentService
 	 * Crée un étudiant en base de données.
 	 * @param student L'étudiant à créer.
 	 */
-	void createStudent(Student student);
+	void createStudent(Student student) throws CreateUserException;
 
 	/**
 	 * Retourne un étudiant en fonction de son id.
