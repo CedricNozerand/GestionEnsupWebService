@@ -4,6 +4,7 @@ import java.util.List;
 
 import eu.ensup.domaine.Student;
 import eu.ensup.service.exceptions.CreateUserException;
+import eu.ensup.service.exceptions.StudentNotFoundException;
 
 public interface IStudentService
 {
@@ -19,7 +20,7 @@ public interface IStudentService
 	 * @param id L'id de l'étudiant à chercher.
 	 * @return L'étudiant dont l'id correspond.
 	 */
-	Student getStudent(int id);
+	Student getStudent(int id) throws StudentNotFoundException;
 
 	/**
 	 * Retourne un étudiant en fonction de son adresse mail.

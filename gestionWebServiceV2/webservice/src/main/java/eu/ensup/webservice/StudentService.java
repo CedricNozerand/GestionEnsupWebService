@@ -88,10 +88,14 @@ public class StudentService implements IStudentService
 	public Student getStudent(@PathParam("id") int id)
 	{
 		LOG.info("Appel de la méthode getStudent() du dao");
-
+		
 		Student student = studentDao.getStudent(id);
 
-		return student;
+		if(student == null) {
+			throw new WebApplicationException(Response.Status.UNAUTHORIZED);
+		}else {
+			return student;
+		}
 	}
 
 	/*

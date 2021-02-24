@@ -10,6 +10,7 @@ import javax.servlet.http.HttpSession;
 
 import eu.ensup.domaine.Student;
 import eu.ensup.service.StudentService;
+import eu.ensup.service.exceptions.StudentNotFoundException;
 import eu.ensup.service.IStudentService;
 
 /**
@@ -60,10 +61,16 @@ public class ViewStudentServlet extends HttpServlet
 		String object = request.getParameter("id");
 		int id = Integer.valueOf(object);
 
-		Student student = studentService.getStudent(id);
+		Student student;
+		try {
+			student = studentService.getStudent(id);
+			dispatcher = request.getRequestDispatcher("etudiantView.jsp");
+			session.setAttribute("student", student);
+		} catch (StudentNotFoundException e) {
+			dispatcher = request.getRequestDispatcher("errors_pages/etudiantNotFound.jsp");
+		}
 
-		dispatcher = request.getRequestDispatcher("etudiantView.jsp");
-		session.setAttribute("student", student);
+		
 
 		dispatcher.forward(request, response);
 	}

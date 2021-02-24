@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import eu.ensup.domaine.Student;
 import eu.ensup.service.StudentService;
+import eu.ensup.service.exceptions.StudentNotFoundException;
 import eu.ensup.service.IStudentService;
 
 /**
@@ -60,7 +61,13 @@ public class EditStudentServlet extends HttpServlet
 		String object = request.getParameter("id");
 		int id = Integer.valueOf(object);
 
-		Student student = studentService.getStudent(id);
+		Student student = null;
+		try {
+			student = studentService.getStudent(id);
+		} catch (StudentNotFoundException e) {
+			
+			e.printStackTrace();
+		}
 
 		dispatcher = request.getRequestDispatcher("etudiantModif.jsp");
 

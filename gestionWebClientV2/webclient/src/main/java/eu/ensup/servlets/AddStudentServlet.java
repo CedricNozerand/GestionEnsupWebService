@@ -69,7 +69,6 @@ public class AddStudentServlet extends HttpServlet
 		try {
 			studentService.createStudent(student);
 		} catch (CreateUserException e) {
-			e.printStackTrace();
 			dispatcher = request.getRequestDispatcher("createUserError.jsp");
 		}
 

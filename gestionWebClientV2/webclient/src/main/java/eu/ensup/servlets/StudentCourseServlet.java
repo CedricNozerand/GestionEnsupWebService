@@ -14,6 +14,7 @@ import eu.ensup.domaine.Course;
 import eu.ensup.domaine.Student;
 import eu.ensup.service.CourseService;
 import eu.ensup.service.StudentService;
+import eu.ensup.service.exceptions.StudentNotFoundException;
 import eu.ensup.service.ICourseService;
 import eu.ensup.service.IStudentService;
 
@@ -47,7 +48,12 @@ public class StudentCourseServlet extends HttpServlet
 		String object = request.getParameter("id");
 		int id = Integer.valueOf(object);
 
-		Student student = studentService.getStudent(id);
+		Student student = null;
+		try {
+			student = studentService.getStudent(id);
+		} catch (StudentNotFoundException e) {
+			e.printStackTrace();
+		}
 		List<Course> courses = courseService.getAllCourses();
 
 		dispatcher = request.getRequestDispatcher("etudiantCours.jsp");

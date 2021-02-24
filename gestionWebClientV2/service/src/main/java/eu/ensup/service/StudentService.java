@@ -17,6 +17,7 @@ import com.fasterxml.jackson.jaxrs.json.JacksonJsonProvider;
 
 import eu.ensup.domaine.Student;
 import eu.ensup.service.exceptions.CreateUserException;
+import eu.ensup.service.exceptions.StudentNotFoundException;
 
 /**
  * Classe StudentService : Fait le lien entre le lanceur et le DAO concernant
@@ -69,7 +70,7 @@ public class StudentService implements IStudentService
 	 * 
 	 * @see eu.ensup.jpaGestionEnsup.service.IStudentService#getStudent(int)
 	 */
-	public Student getStudent(int id)
+	public Student getStudent(int id) throws StudentNotFoundException
 	{
 		LOG.info("Appel de la méthode getStudent() du dao");
 		
@@ -82,6 +83,10 @@ public class StudentService implements IStudentService
 
 		Response response = webTarget.request("application/json").get();
 
+		if(response.getStatus() == 401) {
+			throw new StudentNotFoundException();
+		}
+		
 		return response.readEntity(Student.class);
 	}
 
