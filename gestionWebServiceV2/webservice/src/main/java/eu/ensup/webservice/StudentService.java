@@ -21,7 +21,6 @@ import org.apache.logging.log4j.Logger;
 import eu.ensup.dao.IStudentDao;
 import eu.ensup.dao.StudentDao;
 import eu.ensup.domaine.Student;
-import eu.ensup.webservice.exceptions.StudentServiceException;
 
 /**
  * Classe StudentService : Fait le lien entre le lanceur et le DAO concernant
@@ -62,7 +61,6 @@ public class StudentService implements IStudentService
 	public void createStudent(Student student)
 	{
 		LOG.info("Appel de la méthode createStudent() du dao");
-		String stat = "ok";
 		try {
 			studentDao.createStudent(student);
 		}catch(Exception e) {
