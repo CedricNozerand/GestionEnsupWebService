@@ -1,6 +1,6 @@
 # GestionEnsupWebService
 
-Dépôt de projets de gestion d'école en utilisant les webservices et la gestion des exceptions.
+Projet de gestion d'école utilisant les technologies Maven, JPA, webService et la propagation d'exceptions.
 
 ## Infos versions
 
@@ -10,6 +10,7 @@ V2
 - Propagation d'exceptions et affichage de vues lors d'une erreur applicative
 - Gestion des erreurs de type 404 et 500 et affichage de vues spécialisées
 
+**Retrouvez les procédures d'installation dans les read me se trouvant à la racine de chaque projet.**
 
 ## Développeurs
 
