@@ -4,7 +4,7 @@ Projet de gestion d'école utilisant les technologies Maven, JPA, webService et 
 
 ## Infos versions
 
-V2
+Version 2:
 - Webservice Restful : projet maven web multimodule avec Jersey 2.32
 - Client : projet maven web multimodule avec Jersey 2.32
 - Propagation d'exceptions et affichage de vues lors d'une erreur applicative
